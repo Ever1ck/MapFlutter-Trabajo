@@ -1,0 +1,4 @@
+Correr:
+flutter pub get
+
+flutter run --dart-define ACCESS_TOKEN=sk.eyJ1IjoiZXZlcjFjayIsImEiOiJjbGIxY292cWIxZ2xsM25xb2EycmtnNW5xIn0.N9baQJ0s9vFGSjFagGW8QQ
