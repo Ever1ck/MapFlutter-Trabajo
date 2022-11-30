@@ -9,6 +9,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:mapbox_gl/mapbox_gl.dart';
+import 'package:mapbox_gl_example/fullmapbox.dart';
 import 'full_map.dart';
 import 'map_ui.dart';
 import 'page.dart';
@@ -16,32 +17,22 @@ import 'page.dart';
 final List<MainPage> _allPages = <MainPage>[
   MapUiPage(),
   FullMapPage(),
+  FullMapPage2(),
 ];
 
-class MapsDemo extends StatefulWidget {
-  // FIXME: You need to pass in your access token via the command line argument
-  // --dart-define=ACCESS_TOKEN=ADD_YOUR_TOKEN_HERE
-  // It is also possible to pass it in while running the app via an IDE by
-  // passing the same args there.
-  //
-  // Alternatively you can replace `String.fromEnvironment("ACCESS_TOKEN")`
-  // in the following line with your access token directly.
+class MapsFlutter extends StatefulWidget {
   static const String ACCESS_TOKEN = String.fromEnvironment("ACCESS_TOKEN");
 
   @override
-  State<MapsDemo> createState() => _MapsDemoState();
+  State<MapsFlutter> createState() => _MapsFlutterState();
 }
 
-class _MapsDemoState extends State<MapsDemo> {
+class _MapsFlutterState extends State<MapsFlutter> {
   @override
   void initState() {
     super.initState();
   }
 
-  /// Determine the android version of the phone and turn off HybridComposition
-  /// on older sdk versions to improve performance for these
-  ///
-  /// !!! Hybrid composition is currently broken do no use !!!
   Future<void> initHybridComposition() async {
     if (!kIsWeb && Platform.isAndroid) {
       final androidInfo = await DeviceInfoPlugin().androidInfo;
@@ -72,9 +63,9 @@ class _MapsDemoState extends State<MapsDemo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('MapboxMaps examples')),
-      body: MapsDemo.ACCESS_TOKEN.isEmpty ||
-              MapsDemo.ACCESS_TOKEN.contains("YOUR_TOKEN")
+      appBar: AppBar(title: const Text('Mapbox Mapas')),
+      body: MapsFlutter.ACCESS_TOKEN.isEmpty ||
+              MapsFlutter.ACCESS_TOKEN.contains("YOUR_TOKEN")
           ? buildAccessTokenWarning()
           : ListView.separated(
               itemCount: _allPages.length,
@@ -117,5 +108,5 @@ class _MapsDemoState extends State<MapsDemo> {
 }
 
 void main() {
-  runApp(MaterialApp(home: MapsDemo()));
+  runApp(MaterialApp(home: MapsFlutter()));
 }

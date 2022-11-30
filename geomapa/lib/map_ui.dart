@@ -330,7 +330,7 @@ class MapUiBodyState extends State<MapUiBody> {
   @override
   Widget build(BuildContext context) {
     final MapboxMap mapboxMap = MapboxMap(
-      accessToken: MapsDemo.ACCESS_TOKEN,
+      accessToken: MapsFlutter.ACCESS_TOKEN,
       onMapCreated: onMapCreated,
       initialCameraPosition: _kInitialPosition,
       trackCameraPosition: true,

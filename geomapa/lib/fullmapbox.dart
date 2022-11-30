@@ -4,8 +4,8 @@ import 'package:mapbox_gl/mapbox_gl.dart';
 import 'main.dart';
 import 'page.dart';
 
-class FullMapPage extends MainPage {
-  FullMapPage() : super(const Icon(Icons.map), 'Mapa en patalla completa');
+class FullMapPage2 extends MainPage {
+  FullMapPage2() : super(const Icon(Icons.map), 'Mapa en patalla completa V2');
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +21,9 @@ class FullMap extends StatefulWidget {
 }
 
 class FullMapState extends State<FullMap> {
-  final center = LatLng(-15.494616998957557, -70.13132555228216);
+  final center = LatLng(-33.852, 151.211);
   final streetStyle = 'mapbox://styles/ever1ck/clb2asf1u000314mjuzxp3s9p';
+  final sateliteStyle = 'mapbox://styles/ever1ck/clb2au9cm002k14ojy6gald7s';
   final oscuroStyle = 'mapbox://styles/ever1ck/clb2aqo9j000314p4150bu44x';
   bool _myLocationEnabled = true;
   bool _zoomGesturesEnabled = true;
@@ -101,13 +102,14 @@ class FullMapState extends State<FullMap> {
           ],
         ),
         body: MapboxMap(
-          styleString: isLight ? streetStyle : oscuroStyle,
+          styleString: isLight ? streetStyle : sateliteStyle,
           accessToken: MapsFlutter.ACCESS_TOKEN,
           onMapCreated: _onMapCreated,
           initialCameraPosition: CameraPosition(target: center, zoom: 14),
           onStyleLoadedCallback: _onStyleLoadedCallback,
-          myLocationTrackingMode: _myLocationTrackingMode,
           myLocationEnabled: _myLocationEnabled,
+          myLocationTrackingMode: _myLocationTrackingMode,
+          myLocationRenderMode: MyLocationRenderMode.GPS,
           zoomGesturesEnabled: _zoomGesturesEnabled,
         ));
   }
