@@ -402,21 +402,8 @@ class MapUiBodyState extends State<MapUiBody> {
           Text('camera zoom: ${_position.zoom}'),
           Text('camera tilt: ${_position.tilt}'),
           Text(_isMoving ? '(Camera moving)' : '(Camera idle)'),
-          _mapSizeToggler(),
-          _queryFilterToggler(),
-          _compassToggler(),
           _myLocationTrackingModeCycler(),
-          _latLngBoundsToggler(),
-          _setStyleToSatellite(),
-          _zoomBoundsToggler(),
-          _rotateToggler(),
-          _scrollToggler(),
-          _doubleClickToZoomToggler(),
-          _tiltToggler(),
-          _zoomToggler(),
           _myLocationToggler(),
-          _telemetryToggler(),
-          _visibleRegionGetter(),
         ],
       );
     }
@@ -426,7 +413,7 @@ class MapUiBodyState extends State<MapUiBody> {
         Center(
           child: SizedBox(
             width: _mapExpanded ? null : 300.0,
-            height: 700.0,
+            height: 600.0,
             child: mapboxMap,
           ),
         ),
